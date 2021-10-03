@@ -9,7 +9,7 @@ import (
 )
 
 var currentTime = time.Now()
-var currentTimeFormat = currentTime.Format("YYYY-MM-DD")
+var currentTimeFormat = currentTime.Format("2006-01-02")
 
 func getBannerLocations(bannerID int64) ([]dictionary.Location, error) {
 	db := database.GetDB()
@@ -314,7 +314,7 @@ func GetTierBanners(userID int) ([]dictionary.Banner, error) {
 		INNER JOIN bannerlocationtable bl ON bl.banner_id=b.banner_Id
 		INNER JOIN locations l ON l.location_id=bl.location_id
 		WHERE bt.tier_id = $1 AND bl.location_id = $2
-		AND b.banner_start >= $3 AND b.banner_expired < $3
+		AND DATE(b.banner_start) >= DATE($3) AND DATE(b.banner_expired) < DATE($3)
 		LIMIT 20
 	`
 	// Query execution, works just fine
