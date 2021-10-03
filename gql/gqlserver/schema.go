@@ -90,6 +90,9 @@ func (s *SchemaWrapper) Init() error {
 						"banner_start": &graphql.ArgumentConfig{
 							Type: graphql.String,
 						},
+						"banner_image_url": &graphql.ArgumentConfig{
+							Type: graphql.String,
+						},
 
 						// Related table parameters
 						"banner_tiers": &graphql.ArgumentConfig{
@@ -119,6 +122,9 @@ func (s *SchemaWrapper) Init() error {
 							Type: graphql.String,
 						},
 						"banner_start": &graphql.ArgumentConfig{
+							Type: graphql.String,
+						},
+						"banner_image_url": &graphql.ArgumentConfig{
 							Type: graphql.String,
 						},
 
