@@ -364,7 +364,7 @@ func GetUserBanners(userID int) (*dictionary.User, error) {
 		INNER JOIN bannerlocationtable bl ON bl.banner_id=b.banner_Id
 		INNER JOIN locations l ON l.location_id=bl.location_id
 		WHERE bt.tier_id = $1 AND bl.location_id = $2
-		AND b.banner_start >= $3 AND b.banner_expired < $3
+		AND b.banner_start >= $3 AND b.banner_expired <= $3
 		LIMIT 20
 	`
 	// Query execution, filter by user tier and location
